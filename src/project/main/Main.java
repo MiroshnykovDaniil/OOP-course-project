@@ -1,7 +1,7 @@
 package project.main;
 
 import project.employee.DepartmentHead;
-import project.employee.Employee;
+import project.employee.HeadOfSector;
 import project.employee.Specialist;
 
 public class Main {
@@ -18,9 +18,8 @@ public class Main {
         antoha.addObligation("Много работать");
         antoha.addObligation("Не отдыхать");
         antoha.addObligation("Пить с начальством");
-        Specialist vlad = new Specialist(salary,"Vlad",position,adress,birthDate,null,null);
-
-        antoha.addSubordinate(vlad);
+        HeadOfSector vlad = new HeadOfSector("Vlad",position,adress,birthDate,salary,100,null,null);
+        antoha.addSubordinate(0);
         System.out.println(antoha);
     }
 }

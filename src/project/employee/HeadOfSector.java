@@ -6,11 +6,14 @@ import project.interfaces.Subordinate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentHead extends Employee implements Obligation, Subordinate {
+public class HeadOfSector extends Employee implements Obligation, Subordinate<Specialist> {
+
+
     private List<String> obligations= new ArrayList<String>();;
     private List<String> subordinates= new ArrayList<String>();;
     private int bonus;
-    public DepartmentHead(String name, String position, String adress, String birthDate, int salary, int bonus, List<String> obligations, List<String> subordinates) {
+
+    public HeadOfSector(String name, String position, String adress, String birthDate, int salary, int bonus, List<String> obligations, List<String> subordinates) {
         super(name, position, adress, birthDate, salary);
         this.bonus=bonus;
         if (subordinates != null) this.subordinates = subordinates;
@@ -35,21 +38,19 @@ public class DepartmentHead extends Employee implements Obligation, Subordinate 
         if (getObligations().contains(obligation))
             getObligations().remove(obligation);
     }
+
+    public void addSubordinate(Specialist subordinate) {
+        getSubordinates().add(subordinate.getName());
+    }
+
     @Override
-    public void removeSubordinate(Object subordinate) {
+    public void removeSubordinate(Specialist subordinate) {
         if (getSubordinates().contains(subordinate))
             getSubordinates().remove(subordinate);
     }
+
     @Override
     public String toString(){
         return super.toString()+",obligations = ["+getObligations()+" ], subordinate = [" +getSubordinates()+"]";
-    }
-    @Override
-    public void addSubordinate(Object subordinate) {
-        try{
-        Employee employee =(Employee)subordinate;
-        subordinates.add(employee.getName());
-        }
-        catch(ClassCastException e){ System.out.println("Method: [addSubordinate(Object subordinate)]: Wrong Object. Must be Specialist or HeadOfSector");}
     }
 }
