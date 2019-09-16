@@ -1,20 +1,18 @@
 package project.employee;
 
-import project.interfaces.Obligation;
 import project.interfaces.Subordinate;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentHead extends Employee implements Obligation, Subordinate {
-    private List<String> obligations= new ArrayList<String>();;
-    private List<String> subordinates= new ArrayList<String>();;
+public class DepartmentHead extends Employee implements Subordinate<Object> {
+    private List<String> obligations= new ArrayList<String>();
+    private List<String> subordinates= new ArrayList<String>();
     private int bonus;
     public DepartmentHead(String name, String position, String adress, String birthDate, int salary, int bonus, List<String> obligations, List<String> subordinates) {
-        super(name, position, adress, birthDate, salary);
+        super(name, position, adress, birthDate, salary,obligations);
         this.bonus=bonus;
         if (subordinates != null) this.subordinates = subordinates;
-        if (obligations!=null) this.obligations = obligations;
+        //if (obligations!=null) this.obligations = obligations;
     }
 
     public List<String> getObligations(){return obligations;}

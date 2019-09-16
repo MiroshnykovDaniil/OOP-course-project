@@ -1,19 +1,16 @@
 package project.employee;
 
-import project.interfaces.Obligation;
-import project.interfaces.Subordinate;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Specialist extends Employee implements Obligation {
+public class Specialist extends Employee {
 
     private List<String> obligations= new ArrayList<String>();
     private List<String> subordinates= new ArrayList<String>();
 
     public Specialist(int salary,String name, String position, String adress, String birthDate, List<String> subordinates, List<String> obligations) {
-        super(name, position, adress, birthDate, salary);
-        if (subordinates != null) this.subordinates = subordinates;
+        super(name, position, adress, birthDate, salary,subordinates);
+        // if (subordinates != null) this.subordinates = subordinates;
         if (obligations!=null) this.obligations = obligations;
     }
 
