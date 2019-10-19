@@ -7,7 +7,6 @@ import project.employee.Employee;
 import project.employee.HeadOfSector;
 import project.employee.Specialist;
 import project.group.Group;
-import project.interfaces.FindAge;
 
 public class Main {
 
@@ -40,15 +39,14 @@ public class Main {
        // System.out.println(Employee.findAge(vlads));
        // antoha.addSubordinate(0);
 //        System.out.println(antoha);
-
         Group group = new Group();
         group.addEmployee(antoha);
         group.addEmployee(departmentHead);
         group.addEmployee(specialist);
         group.addEmployee(departmentHead1);
 //        System.out.println(group);
-//        System.out.println(antoha);
-        System.out.println(group.toString());
+       System.out.println(antoha);
+//        System.out.println(group.toString());
 //        System.out.println(group.findEmployee("Стрельцов"));
     }
 

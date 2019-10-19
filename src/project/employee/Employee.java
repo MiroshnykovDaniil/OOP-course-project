@@ -2,10 +2,7 @@ package project.employee;
 
 import java.util.*;
 
-import project.interfaces.FindAge;
-import project.interfaces.Obligation;
-
-public abstract class Employee implements Obligation {
+public abstract class Employee  {
     private String name;
     private String position;
     private String address;
@@ -14,7 +11,6 @@ public abstract class Employee implements Obligation {
     private String department;
     private List<String> obligations = new ArrayList<String>();
     private Map<String, Employee> subordinates = new HashMap<>();
-    //private Map<String,Employee> sub = new HashMap<>();
 
     public Map<String, Employee> getSubordinates() {
         return subordinates;
@@ -29,6 +25,11 @@ public abstract class Employee implements Obligation {
     public String getAddress(){return address;}
     public String getBirthDate(){return birthDate;}
     public int getSalary(){return salary;}
+
+    public void setObligations(List<String> obligations) {
+        this.obligations = obligations;
+    }
+
     public List<String> getObligations(){return obligations;}
 
     public String getDepartment() {
