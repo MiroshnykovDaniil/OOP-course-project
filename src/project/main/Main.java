@@ -3,37 +3,53 @@ package project.main;
 import java.util.ArrayList;
 
 import project.employee.DepartmentHead;
+import project.employee.Employee;
 import project.employee.HeadOfSector;
 import project.employee.Specialist;
+import project.group.Group;
+import project.interfaces.FindAge;
 
 public class Main {
 
     public static  void main(String args[]){
-        String name="Antoha";
+        String name="Иванов Антон Федерович";
         String position="Specialist";
         String adress="Kharkiv";
         String birthDate="01.02.1990";
         int salary=1000;
-        
-        DepartmentHead antoha = new DepartmentHead(name,position,adress,birthDate,salary,100,null,null);
+
+        HeadOfSector antoha = new HeadOfSector(name,position,adress,birthDate,salary,100,null,null, "Main Sector");
         antoha.addObligation("Работать");
         antoha.addObligation("Много работать");
         antoha.addObligation("Не отдыхать");
-        antoha.addObligation("Пить с начальством");
         String birthDate1="01.02.1980";
         String birthDate2="01.02.2000";
 
-        HeadOfSector vlad = new HeadOfSector("Vlad",position,adress,birthDate,salary,100,null,null);
-        HeadOfSector vlad1 = new HeadOfSector("Vlad_OLD",position,adress,birthDate1,salary,100,null,null);
-        HeadOfSector vlad2 = new HeadOfSector("Vlad_YOUNG",position,adress,birthDate2,salary,100,null,null);
+        DepartmentHead departmentHead = new DepartmentHead("Петров Владислав Викторович",position,adress,birthDate,salary,100,null,null, "First");
+        Specialist specialist = new Specialist("Стрельцов Кузьма Валерьевич",position,adress,birthDate1,salary,null,null, "Second");
+        DepartmentHead departmentHead1 = new DepartmentHead("Ложкин Дмитрий Васильевич",position,adress,birthDate2,salary,100,null,null, "First");
+        antoha.addSubordinate(departmentHead);
+        antoha.addSubordinate(specialist);
+        antoha.addSubordinate(departmentHead1);
+        specialist.addSubordinate(departmentHead1);
+        departmentHead1.addSubordinate(departmentHead);
 
-        ArrayList<HeadOfSector> vlads = new ArrayList<HeadOfSector>();
-        vlads.add(vlad); vlads.add(vlad1); vlads.add(vlad2);
+        ArrayList<Employee> vlads = new ArrayList<Employee>();
+        vlads.add(departmentHead); vlads.add(specialist); vlads.add(departmentHead1);
 
-        System.out.println(vlad.findAge(vlads));
+       // System.out.println(Employee.findAge(vlads));
+       // antoha.addSubordinate(0);
+//        System.out.println(antoha);
 
-        antoha.addSubordinate(0);
-        System.out.println(antoha);
+        Group group = new Group();
+        group.addEmployee(antoha);
+        group.addEmployee(departmentHead);
+        group.addEmployee(specialist);
+        group.addEmployee(departmentHead1);
+//        System.out.println(group);
+//        System.out.println(antoha);
+        System.out.println(group.toString());
+//        System.out.println(group.findEmployee("Стрельцов"));
     }
 
 }
